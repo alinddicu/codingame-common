@@ -61,7 +61,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\codingame-common\codingame-common.csproj">
+    <ProjectReference Include="..\codingame.common\codingame.common.csproj">
       <Project>{22152da3-c08d-40aa-b086-8c48c45bd08c}</Project>
       <Name>codingame-common</Name>
     </ProjectReference>
