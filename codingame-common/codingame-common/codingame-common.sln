@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "codingame-common", "codingame-common\codingame-common.csproj", "{22152DA3-C08D-40AA-B086-8C48C45BD08C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "codingame-common-test", "codingame-common-test\codingame-common-test.csproj", "{939D99AD-6D21-48AF-A150-3DDD1D7EE9FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22152DA3-C08D-40AA-B086-8C48C45BD08C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22152DA3-C08D-40AA-B086-8C48C45BD08C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22152DA3-C08D-40AA-B086-8C48C45BD08C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22152DA3-C08D-40AA-B086-8C48C45BD08C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{939D99AD-6D21-48AF-A150-3DDD1D7EE9FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{939D99AD-6D21-48AF-A150-3DDD1D7EE9FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{939D99AD-6D21-48AF-A150-3DDD1D7EE9FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{939D99AD-6D21-48AF-A150-3DDD1D7EE9FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
