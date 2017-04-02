@@ -1,30 +1,41 @@
 ﻿namespace codingame.common.build.submit.file
 {
+	using System;
+	using System.Collections.Generic;
 	using System.IO;
 	using System.Linq;
 	using System.Text;
 
 	public class BuildSubmitFile
     {
-		public void Build(string sourceFolderPath, string targetFilePath)
+		public void Build(DirectoryInfo sourceFolder, FileInfo targetFile)
 		{
 			var contents = new StringBuilder();
-			AppendFilesContents(sourceFolderPath, contents);
+			AppendFilesContents(sourceFolder, contents);
 
-			File.WriteAllText(targetFilePath, contents.ToString());
+			File.WriteAllText(targetFile.FullName, contents.ToString());
 		}
 
-		private static void AppendFilesContents(string root, StringBuilder contents)
+		private static IEnumerable<string> GetReferencedProjectsPaths(DirectoryInfo sourceFolder)
 		{
-			foreach (var file in Directory.EnumerateFiles(root, "*.cs").Where(f => !f.EndsWith("AssemblyInfo.cs")))
+			throw new NotImplementedException();
+		}
+
+		private static void AppendFilesContents(FileSystemInfo sourceFolder, StringBuilder contents)
+		{
+			var sourceFolderPath = sourceFolder.FullName;
+			var files = Directory
+							.EnumerateFiles(sourceFolderPath, "*.cs")
+							.Where(f => !f.EndsWith("AssemblyInfo.cs"));
+			foreach (var file in files)
 			{
 				contents.AppendLine(File.ReadAllText(file));
 				contents.AppendLine();
 			}
 
-			foreach (var d in Directory.GetDirectories(root))
+			foreach (var d in Directory.GetDirectories(sourceFolderPath))
 			{
-				AppendFilesContents(d, contents);
+				AppendFilesContents(new DirectoryInfo(d), contents);
 			}
 		}
 	}
