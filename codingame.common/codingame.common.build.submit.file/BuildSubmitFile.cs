@@ -1,24 +1,33 @@
 ﻿namespace codingame.common.build.submit.file
 {
-	using System;
 	using System.Collections.Generic;
 	using System.IO;
 	using System.Linq;
 	using System.Text;
+	using Microsoft.Build.Evaluation;
 
 	public class BuildSubmitFile
-    {
+	{
 		public void Build(DirectoryInfo sourceFolder, FileInfo targetFile)
 		{
 			var contents = new StringBuilder();
-			AppendFilesContents(sourceFolder, contents);
+			var refProjects = GetReferencedProjectsFolders(sourceFolder);
+			refProjects.Concat(new[] { sourceFolder })
+			.ToList()
+			.ForEach(sf => { AppendFilesContents(sf, contents); });
 
 			File.WriteAllText(targetFile.FullName, contents.ToString());
 		}
 
-		private static IEnumerable<string> GetReferencedProjectsPaths(DirectoryInfo sourceFolder)
+		private static IEnumerable<FileSystemInfo> GetReferencedProjectsFolders(FileSystemInfo currentProjectFolder)
 		{
-			throw new NotImplementedException();
+			var collection = new ProjectCollection();
+			var csprojFileName = Path.Combine(currentProjectFolder.FullName, currentProjectFolder.Name + ".csproj");
+			var project = collection.LoadProject(csprojFileName);
+			return project
+				.GetItems("ProjectReference")
+				.Select(pr => Path.Combine(currentProjectFolder.FullName, pr.EvaluatedInclude))
+				.Select(file => new FileInfo(file).Directory);
 		}
 
 		private static void AppendFilesContents(FileSystemInfo sourceFolder, StringBuilder contents)
