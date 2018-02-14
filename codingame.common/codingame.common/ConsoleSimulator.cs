@@ -3,7 +3,7 @@
 	using System.Collections.Generic;
 	using codingame_common;
 
-	public class ConsoleSimulator
+	public class ConsoleSimulator : IConsole
 	{
 		private readonly string[] _linesToRead;
 		private readonly List<string> _writtenLines = new List<string>();

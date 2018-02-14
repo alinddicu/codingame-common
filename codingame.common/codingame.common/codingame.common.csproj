@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleSimulator.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="IConsole.cs" />
     <Compile Include="NoMoreLinesToReadException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
